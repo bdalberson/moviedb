@@ -30,6 +30,16 @@ app.get('/api/movies', (req, res) => {
         res.json(results);
       })
 });
+app.get('/api/movie-reviews', (req, res) => {
+
+    db.query(`SELECT movies_names.name AS Title, movies_reviews.review AS Review, movies_reviews.id AS ReviewID
+    FROM movies_names JOIN movies_reviews ON movies_names.id = movies_reviews.id;`, (err, results) =>{      
+        console.log(results);
+        console.log(err);
+        res.json(results);
+      })
+});
+
 
 
 app.listen(port, () =>
