@@ -42,6 +42,17 @@ app.get('/api/movie-reviews', (req, res) => {
       })
 });
 
+//put a body with {"name": "cars 2"}  and POST to add a movie
+app.post('/api/add-movie', (req, res) => {
+    let movieName = req.body.name;
+    console.log(movieName);
+    db.query(`INSERT INTO movies_names (name) VALUES ('${movieName}');`, (err, results) =>{      
+        console.log(results);
+        console.log(err);
+        res.send(`${movieName} added to db`);
+      })
+})
+
 
 app.listen(port, () =>
     console.info(`Example app listening at http://localhost:${port} 🚀`)
