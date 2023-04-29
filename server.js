@@ -31,7 +31,7 @@ app.get('/api/movies', (req, res) => {
       })
 });
 
-//returns movie reviews
+//returns movies reviews
 app.get('/api/movie-reviews', (req, res) => {
 
     db.query(`SELECT movies_names.name AS Title, movies_reviews.review AS Review, movies_reviews.id AS ReviewID
@@ -41,7 +41,6 @@ app.get('/api/movie-reviews', (req, res) => {
         res.json(results);
       })
 });
-
 
 
 app.listen(port, () =>
