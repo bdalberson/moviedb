@@ -21,7 +21,7 @@ const db = mysql.createConnection(
 
 
 
-
+//returns movies
 app.get('/api/movies', (req, res) => {
     
     db.query('SELECT * FROM movies_names', (err, results) =>{      
@@ -30,6 +30,8 @@ app.get('/api/movies', (req, res) => {
         res.json(results);
       })
 });
+
+//returns movie reviews
 app.get('/api/movie-reviews', (req, res) => {
 
     db.query(`SELECT movies_names.name AS Title, movies_reviews.review AS Review, movies_reviews.id AS ReviewID
